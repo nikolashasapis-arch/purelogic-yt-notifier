@@ -1,0 +1,21 @@
+name: youtube uploads to discord
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch: {}
+permissions:
+  contents: write
+concurrency: notify
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python3 notify.py
+        env:
+          WEBHOOKS: ${{ secrets.WEBHOOKS }}
+      - run: |
+          git config user.name "upload-bot"
+          git config user.email "upload-bot@users.noreply.github.com"
+          git add state.json
+          git diff --cached --quiet || (git commit -m "update seen videos" && git push)
