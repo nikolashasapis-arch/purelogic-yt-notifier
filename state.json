@@ -36,7 +36,9 @@
       "rVAHfRNWH-A": 100000,
       "x5JZ4GjSADI": 100000,
       "xQqr-MXZB38": 100000
-    }
+    },
+    "subs_hit": 100000,
+    "subs": 178000
   },
   "purebusiness": {
     "channel_id": "UCSAhOTWPuy_uSvF_OkrZTDQ",
@@ -75,7 +77,9 @@
       "mv3JC7pPgC0": 0,
       "NmKvwHMFiTw": 0,
       "kO1ttlNr71k": 0
-    }
+    },
+    "subs_hit": 25000,
+    "subs": 47000
   },
   "puresports": {
     "channel_id": "UC_q0p8fgAwQfA5gWVrt1Wyw",
@@ -113,6 +117,8 @@
       "4KDa4pMqmoA": 0,
       "zOOK7-cQGJ4": 0,
       "MxF_WyYi9N4": 100000
-    }
+    },
+    "subs_hit": 10000,
+    "subs": 10400
   }
 }
