@@ -23,6 +23,10 @@ def short(n):
 
 def subscribers(cid):
     html = get(f"https://www.youtube.com/channel/{cid}").decode("utf-8", "replace")
+    if os.environ.get("DEBUG_SUBS"):
+        for mm in list(re.finditer(r'([\d.,]+\s*[KMB]?)\s*subscribers', html))[:6]:
+            ctx = html[max(0, mm.start() - 70):mm.start()].replace("\n", " ")
+            print(f"::notice::{cid} | {mm.group(0)} | ...{ctx[-70:]}")
     m = re.search(r'"([\d.,]+)\s*([KMB]?)\s*subscribers"', html)
     if not m:
         return None
