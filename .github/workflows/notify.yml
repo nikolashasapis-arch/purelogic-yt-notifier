@@ -20,7 +20,6 @@ jobs:
         env:
           WEBHOOKS: ${{ secrets.WEBHOOKS }}
           TEST: ${{ inputs.test }}
-          DEBUG_SUBS: "1"
       - run: |
           git config user.name "upload-bot"
           git config user.email "upload-bot@users.noreply.github.com"
