@@ -2,6 +2,7 @@
   "purelogic": {
     "channel_id": "UCHZIig8VyRzUAHc2db3YuSw",
     "seen": [
+      "CAeapfaFB48",
       "xx5F5zHGDeA",
       "diF9JOlm1ME",
       "KJvehPb2XFY",
@@ -18,11 +19,31 @@
       "xQqr-MXZB38",
       "YbtFbAtiXf4",
       "GrryjB6bo2o"
-    ]
+    ],
+    "subs_hit": 25000,
+    "subs": 47000,
+    "views_hit": {
+      "CAeapfaFB48": 0,
+      "xx5F5zHGDeA": 100000,
+      "diF9JOlm1ME": 0,
+      "KJvehPb2XFY": 0,
+      "N58eyQ5PYzc": 100000,
+      "PNhGpRomL4Y": 0,
+      "f0sPMc_F6lk": 0,
+      "YlBaFHKchCA": 0,
+      "-zBGpX2HmYo": 500000,
+      "ezv2tM2KzYI": 100000,
+      "9mY7f1-lw1k": 0,
+      "EpCqvPT1LXM": 500000,
+      "rVAHfRNWH-A": 100000,
+      "x5JZ4GjSADI": 100000,
+      "xQqr-MXZB38": 100000
+    }
   },
   "purebusiness": {
     "channel_id": "UCSAhOTWPuy_uSvF_OkrZTDQ",
     "seen": [
+      "GjiqC_vtcSE",
       "DIfhsWyLMjc",
       "X_-BkaID-Sc",
       "LevPStSgfZo",
@@ -39,7 +60,26 @@
       "kO1ttlNr71k",
       "_Rvhb_IqKy0",
       "0JU25Jqj1jk"
-    ]
+    ],
+    "subs_hit": 100000,
+    "subs": 178000,
+    "views_hit": {
+      "GjiqC_vtcSE": 0,
+      "DIfhsWyLMjc": 0,
+      "X_-BkaID-Sc": 0,
+      "LevPStSgfZo": 100000,
+      "uGxyXatIrsg": 100000,
+      "bivgeD6qZqg": 100000,
+      "LJppxFQf0e0": 100000,
+      "ACkfOOsLGeI": 0,
+      "X2-sjByHtKo": 500000,
+      "ho70TlcTf1g": 0,
+      "yX8NUfSfsbE": 100000,
+      "ojjjlvcG02M": 100000,
+      "mv3JC7pPgC0": 0,
+      "NmKvwHMFiTw": 0,
+      "kO1ttlNr71k": 0
+    }
   },
   "puresports": {
     "channel_id": "UC_q0p8fgAwQfA5gWVrt1Wyw",
@@ -60,6 +100,25 @@
       "zOOK7-cQGJ4",
       "MxF_WyYi9N4",
       "kfp_IvGrRIU"
-    ]
+    ],
+    "subs_hit": 100000,
+    "subs": 178000,
+    "views_hit": {
+      "ca9HgwveCag": 0,
+      "FDUnh3cykf0": 0,
+      "rQ6YgEFJGc4": 0,
+      "tdsZ-DMgD1c": 0,
+      "V9BVM2thg0k": 0,
+      "1Dj3K0_Z8jw": 0,
+      "S5CINBfDMxI": 0,
+      "9GJvWEIW4qw": 0,
+      "te3jKIM-7LA": 100000,
+      "ckp-_Tcp-Rk": 0,
+      "21P8sUGnji0": 0,
+      "_pZFSmy9mc4": 0,
+      "4KDa4pMqmoA": 0,
+      "zOOK7-cQGJ4": 0,
+      "MxF_WyYi9N4": 100000
+    }
   }
 }
