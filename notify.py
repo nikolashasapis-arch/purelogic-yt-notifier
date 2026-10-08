@@ -30,6 +30,13 @@ def post(hook, content):
 def main():
     channels = json.load(open("channels.json"))
     hooks = json.loads(os.environ.get("WEBHOOKS") or "{}")
+    if os.environ.get("TEST") == "true":
+        if not hooks:
+            sys.exit("WEBHOOKS secret is missing or empty")
+        for key, h in hooks.items():
+            post(h["url"], f"✅ test: {key} uploads are connected. new shorts will show up here automatically.")
+            print(f"{key}: test message sent")
+        return
     state = json.load(open("state.json")) if os.path.exists("state.json") else {}
     for key, ch in channels.items():
         cid = ch.get("channel_id") or state.get(key, {}).get("channel_id")

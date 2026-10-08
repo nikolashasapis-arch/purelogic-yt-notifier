@@ -2,7 +2,12 @@ name: youtube uploads to discord
 on:
   schedule:
     - cron: "*/15 * * * *"
-  workflow_dispatch: {}
+  workflow_dispatch:
+    inputs:
+      test:
+        description: "send a test message to each uploads channel"
+        type: boolean
+        default: false
 permissions:
   contents: write
 concurrency: notify
@@ -14,6 +19,7 @@ jobs:
       - run: python3 notify.py
         env:
           WEBHOOKS: ${{ secrets.WEBHOOKS }}
+          TEST: ${{ inputs.test }}
       - run: |
           git config user.name "upload-bot"
           git config user.email "upload-bot@users.noreply.github.com"
