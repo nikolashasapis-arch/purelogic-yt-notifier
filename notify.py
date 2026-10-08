@@ -2,7 +2,7 @@
 """checks each youtube channel's feed and posts new uploads to its discord channel.
 webhooks come from the WEBHOOKS secret (json: {"purelogic": {"url": ..., "role": ...}, ...}).
 first run for a channel only records what's already there, so old videos don't get spammed."""
-import json, os, re, sys, urllib.request
+import json, os, re, sys, urllib.request, urllib.error
 import xml.etree.ElementTree as ET
 
 UA = {"User-Agent": "Mozilla/5.0 (PureLogic upload notifier)", "Accept-Language": "en"}
@@ -29,7 +29,11 @@ def post(hook, content):
 
 def main():
     channels = json.load(open("channels.json"))
-    hooks = json.loads(os.environ.get("WEBHOOKS") or "{}")
+    raw = (os.environ.get("WEBHOOKS") or "").strip()
+    try:
+        hooks = json.loads(raw or "{}")
+    except ValueError:
+        sys.exit(f"::error::WEBHOOKS secret isn't valid json. it starts with: {raw[:12]!r}")
     if os.environ.get("TEST") == "true":
         if not hooks:
             sys.exit("WEBHOOKS secret is missing or empty")
@@ -72,4 +76,11 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    try:
+        main()
+    except urllib.error.HTTPError as e:
+        print(f"::error::discord/youtube said {e.code}: {e.read().decode(errors='replace')[:200]}")
+        sys.exit(1)
+    except Exception as e:
+        print(f"::error::{type(e).__name__}: {str(e)[:200]}")
+        sys.exit(1)
