@@ -31,9 +31,9 @@ def main():
     channels = json.load(open("channels.json"))
     raw = (os.environ.get("WEBHOOKS") or "").strip()
     try:
-        hooks = json.loads(raw or "{}")
+        hooks = json.JSONDecoder().raw_decode(raw[raw.index("{"):])[0] if raw else {}
     except ValueError:
-        sys.exit(f"::error::WEBHOOKS secret isn't valid json. it starts with: {raw[:12]!r}")
+        sys.exit(f"::error::WEBHOOKS secret isn't valid json. length {len(raw)}, ends with: {raw[-6:]!r}")
     if os.environ.get("TEST") == "true":
         if not hooks:
             sys.exit("WEBHOOKS secret is missing or empty")
