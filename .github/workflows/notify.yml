@@ -1,4 +1,4 @@
-name: youtube uploads to discord
+name: discord automations
 on:
   schedule:
     - cron: "*/5 * * * *"

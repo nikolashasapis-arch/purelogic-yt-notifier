@@ -50,6 +50,10 @@ def post(hook, content):
 
 
 def main():
+    settings = json.load(open("settings.json")) if os.path.exists("settings.json") else {}
+    if not settings.get("uploads", True) and not settings.get("milestones", True) and os.environ.get("TEST") != "true":
+        print("upload and milestone posts are switched off in settings.json")
+        return
     channels = json.load(open("channels.json"))
     raw = (os.environ.get("WEBHOOKS") or "").strip()
     try:
@@ -93,13 +97,13 @@ def main():
         hook = hooks.get(key, {})
         if first:
             print(f"{key}: first run, recorded {len(vids)} existing videos")
-        elif new and hook.get("url"):
+        elif new and hook.get("url") and settings.get("uploads", True):
             for vid, title in reversed(new):
                 ping = f"<@&{hook['role']}> " if hook.get("role") else ""
                 post(hook["url"], f"{ping}new video just dropped 🎬\n**{title}**\nhttps://youtu.be/{vid}")
                 print(f"{key}: posted {title}")
         # milestones (first time we see a channel/video we only record where it is, no posts)
-        mhook = hooks.get("milestones", {}).get("url")
+        mhook = hooks.get("milestones", {}).get("url") if settings.get("milestones", True) else None
         name = NAMES.get(key, key)
         try:
             subs = subscribers(cid)
