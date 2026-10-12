@@ -51,7 +51,7 @@ def post(hook, content):
 
 def main():
     settings = json.load(open("settings.json")) if os.path.exists("settings.json") else {}
-    if not settings.get("uploads", True) and not settings.get("milestones", True) and os.environ.get("TEST") != "true":
+    if not settings.get("uploads", True) and not settings.get("milestones", True):
         print("upload and milestone posts are switched off in settings.json")
         return
     channels = json.load(open("channels.json"))
