@@ -16,6 +16,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: restore member list
+        uses: actions/cache/restore@v4
+        with:
+          path: .members
+          key: members-${{ github.run_id }}
+          restore-keys: members-
+      - name: joins and leaves
+        run: python3 members.py
+        continue-on-error: true
+        env:
+          DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+      - name: save member list
+        if: always()
+        continue-on-error: true
+        uses: actions/cache/save@v4
+        with:
+          path: .members
+          key: members-${{ github.run_id }}
       - run: python3 notify.py
         env:
           WEBHOOKS: ${{ secrets.WEBHOOKS }}
