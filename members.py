@@ -70,7 +70,7 @@ def name(u):
 
 def main():
     if not TOKEN:
-        print("no DISCORD_TOKEN secret yet, skipping join/leave log")
+        print("::notice::no DISCORD_TOKEN secret yet, skipping join/leave log")
         return
     guilds = call("GET", "/users/@me/guilds")
     if len(guilds) != 1:
@@ -103,7 +103,7 @@ def main():
                            {"name": "Joined", "value": f"<t:{v['joined']}:f>", "inline": True},
                            {"name": "Account created", "value": f"<t:{created(u['id'])}:R>", "inline": True}],
                 "footer": {"text": f"members: {len(members)}"}}]})
-            print(f"join: {u['username']}")
+            print(f"::notice::join: {u['username']}")
             time.sleep(0.5)
         for uid, v in left:
             try:
@@ -116,10 +116,10 @@ def main():
                            {"name": "Left", "value": f"<t:{now}:f>", "inline": True},
                            {"name": "Was here for", "value": f"since <t:{v['joined']}:R>", "inline": True}],
                 "footer": {"text": f"members: {len(members)}"}}]})
-            print(f"leave: {u['username']}")
+            print(f"::notice::leave: {u['username']}")
             time.sleep(0.5)
     else:
-        print(f"first run, recorded {len(members)} members")
+        print(f"::notice::first run, recorded {len(members)} members")
 
     save_state({k: {"joined": v["joined"], "username": v["user"]["username"]} for k, v in members.items()})
 
