@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
     inputs:
       test:
-        description: "send a test message to each uploads channel"
+        description: "post preview cards (and test messages)"
         type: boolean
         default: false
 permissions:
@@ -23,10 +23,11 @@ jobs:
           key: members-${{ github.run_id }}
           restore-keys: members-
       - name: joins and leaves
-        run: python3 members.py
+        run: pip install -q pillow && python3 members.py
         continue-on-error: true
         env:
           DISCORD_TOKEN: ${{ secrets.DISCORD_TOKEN }}
+          TEST: ${{ inputs.test }}
       - name: save member list
         if: always()
         continue-on-error: true
